@@ -20,7 +20,7 @@ interface Session {
 export class AppComponent {
 	title = 'demo-agent-in-conference';
 	private apiKey:string = '';
-	private baseUrl = "https://api.staging.cloudonix.io";
+	private baseUrl = "https://api.cloudonix.io";
 	errorMessage:string = '';
 	private _errorTime = 0;
 	private _domain:string = '';
