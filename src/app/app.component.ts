@@ -98,7 +98,7 @@ export class AppComponent {
 	}
 
 	public startAgent(msisdn:string):void {
-		this.connectToConference(msisdn, 'myconf-call-1', false).then(session => {
+		this.connectToConference(msisdn, 'myconf-call-1', true, false).then(session => {
 			console.log("started agent", msisdn, "session", session.token);
 			this._agentSession = session.token;
 			window.localStorage.setItem('agent-session', session.token);
@@ -126,7 +126,7 @@ export class AppComponent {
 
 	public connectCustomer(msisdn:string):void {
 		this.errorMessage = '';
-		this.connectToConference(msisdn, 'myconf-call-1', true).then(session => {
+		this.connectToConference(msisdn, 'myconf-call-1', false, true).then(session => {
 			console.log("Started customer call", msisdn, "-", session.token);
 			this._currentCall = session.token;
 			this.startMonitoringCustomer();
@@ -195,11 +195,12 @@ export class AppComponent {
 		});
 	}
 
-	private connectToConference(destination:string, name:string, immediate:boolean):Promise<Session> {
+	private connectToConference(destination:string, name:string, agent:boolean, immediate:boolean):Promise<Session> {
+		let endOnExit = agent ? ' endConferenceOnExit="true"' : '';
 		let request = {
 			callerId: "1234",
 			destination: destination,
-			cxml: `<Response><Dial><Conference beep="false">${name}</Conference></Dial></Response>`,
+			cxml: `<Response><Dial><Conference beep="false"${endOnExit}>${name}</Conference></Dial></Response>`,
 			execute: immediate ? 'immediately' : 'connected'
 		};
 		return this.http.post<Session>(`${this.baseUrl}/calls/${this.domain}/application`, request, {
