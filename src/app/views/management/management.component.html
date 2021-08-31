@@ -1,0 +1,27 @@
+<mat-card id="domain-selector" *ngIf="needToSelectDomain">
+	<mat-card-header>Select domain</mat-card-header>
+	<mat-card-content>
+		<mat-form-field appearance="outline">
+			<mat-label>Domain</mat-label>
+			<mat-select (selectionChange)="selectDomain($event)" name="domain">
+			  <mat-option *ngFor="let domain of domains" [value]="domain">{{domain}}</mat-option>
+			</mat-select>
+		</mat-form-field>
+	</mat-card-content>
+</mat-card>
+
+<mat-card id="call-agent" *ngIf="readyToStart">
+	<mat-card-header>
+		<mat-card-title>{{domain}}</mat-card-title>
+		<mat-card-subtitle>Connect Agent</mat-card-subtitle>
+	</mat-card-header>
+	<mat-card-content>
+		<mat-form-field appearance="outline">
+			<mat-label>Agent MSISDN</mat-label>
+			<input matInput type="text" [formControl]="agentMsisdn" name="agent"/>
+		</mat-form-field>
+	</mat-card-content>
+	<mat-card-actions>
+		<button mat-stroked-button (click)="startAgent()" [disabled]="agentMsisdn.invalid"><mat-icon>call</mat-icon> Connect</button>
+	</mat-card-actions>
+</mat-card>

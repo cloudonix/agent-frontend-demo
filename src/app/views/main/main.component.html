@@ -1,0 +1,15 @@
+<mat-card id="welcome">
+	<mat-card-content>
+		<p>
+			Please enter your Cloudonix API key (as can be seen in the Cloudonix Cockpit):
+		</p>
+		<mat-form-field class="api-key" appearance="outline">
+			<mat-label>Cloudonix API Key</mat-label>
+			<input matInput #cxkey type="text" name="cloudonix-api-key" [formControl]="apikeyFormControl" [errorStateMatcher]="apikeyCheck" (focus)="forceCheck = true"/>
+			<mat-error>A valid Cloudonix API key is required</mat-error>
+		</mat-form-field>
+	</mat-card-content>
+	<mat-card-actions>
+		<button mat-stroked-button (click)="submitKey()" [disabled]="!keyIsValid"><mat-icon>done</mat-icon> OK</button>
+	</mat-card-actions>
+</mat-card>

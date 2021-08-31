@@ -1,0 +1,36 @@
+<mat-card id="wait-for-agent" *ngIf="waitingForAgent">
+	<mat-card-header>
+		<mat-card-title>Waiting for agent...</mat-card-title>
+	</mat-card-header>
+</mat-card>
+
+<mat-card id="dispatcher" *ngIf="!isInCall && !waitingForAgent">
+	<mat-card-header>
+		<mat-card-title>Call Customer</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<mat-form-field appearance="outline">
+			<mat-label>Customer MSISDN</mat-label>
+			<input matInput type="text" [formControl]="customerMsisdn" name="customer"/>
+		</mat-form-field>
+	</mat-card-content>
+	<mat-card-actions>
+		<button mat-stroked-button class="call" (click)="callCustomer()" [disabled]="customerMsisdn.invalid"><mat-icon>call</mat-icon> Connect</button>
+	</mat-card-actions>
+</mat-card>
+
+<mat-card id="call-control" *ngIf="isInCall">
+	<mat-card-header>
+		<mat-card-title>Customer Call {{customerMsisdn.value}}</mat-card-title>
+	</mat-card-header>
+	<mat-card-actions>
+		<button mat-stroked-button class="hangup" (click)="hangupCustomer()"><mat-icon>call_end</mat-icon> Disconnect Customer</button>
+	</mat-card-actions>
+</mat-card>
+
+<mat-card id="session-control">
+	<mat-card-header><mat-card-title>Agent Control</mat-card-title></mat-card-header>
+	<mat-card-actions>
+		<button mat-stroked-button class="hangup" (click)="endSession()"><mat-icon>call_end</mat-icon> End Session</button>
+	</mat-card-actions>
+</mat-card>
