@@ -10,6 +10,9 @@ To use this demo, make sure you have a Cloudonix account (or create one at https
 6. Install required dependencies by running `npm install`
 7. Start the application using `ng serve --open`
 
+Alternatively, if you already have all the necessary keys and numbers and just want to get on with playing with the application,
+you can our [hosted demo here on GitHub](https://cloudonix.github.io/agent-frontend-demo/).
+
 ## Workflow
 
 1. Enter your Cloudonix API Key into the main screen and click "OK".
