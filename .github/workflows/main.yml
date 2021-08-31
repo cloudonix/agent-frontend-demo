@@ -21,3 +21,8 @@ jobs:
         npm install -g @angular/cli
         npm install
         ng build --configuration production --optimization --output-path dist
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@4.1.4
+      with:
+        branch: gh-pages
+        folder: dist
