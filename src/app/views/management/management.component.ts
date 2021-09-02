@@ -14,7 +14,7 @@ export class ManagementComponent implements OnInit, AfterViewInit {
 	domains: string[] = [];
 	agentMsisdn = new FormControl('', [
 		Validators.required,
-		Validators.minLength(4),
+		Validators.minLength(1),
 	]);
 
 	constructor(private app:AppComponent, private router:Router) { }
