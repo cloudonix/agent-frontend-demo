@@ -57,6 +57,7 @@ To connect customers (or an agent) through a public phone number, you first need
 
 Once you have an account with an access provider, log in to the Cloudonix Cockpit and navigate to "Outbound Trunks". If you have more than one domain, you'd then need to select the domain where you want to connect the telephony access provider, then click the "➕" button. In the dialog that opens, give the new interconnect setting a name, then enter the connection details that you got from your access provider - including:
 
+* "Transport Type" - the protocol your access provider uses. This is often "UDP", so if none was mentioned in your access provider's account details, it is safe to choose that. 
 * "Address" - this would be the address of your access provider's SIP server or "trunk" IP address.
 * "Port" - this would be the port number for your access provider account. The default port number (5060) often does not need to be changed.
 * "Prefix" - your access provider will often assign (or let you choose) an access code to be used for "incoming calls". This may be called a "CLI prefix" or a "trunk" prefix.
