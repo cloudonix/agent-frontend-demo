@@ -199,6 +199,7 @@ export class AppComponent {
 		let endOnExit = agent ? ' endConferenceOnExit="true"' : '';
 		let request = {
 			callerId: "1234",
+			record: !agent,
 			destination: destination,
 			cxml: `<Response><Dial><Conference beep="false"${endOnExit}>${name}</Conference></Dial></Response>`,
 			execute: immediate ? 'immediately' : 'connected'
